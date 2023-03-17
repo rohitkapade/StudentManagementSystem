@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">  
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<title>Insert title here</title>
+</head>
+
+<style>
+
+  body{
+    align-items: center;
+    background-color: #f1f1f1;
+  
+  }
+
+#links{
+	 background-color: #fff;
+	padding-top:15px;
+  color: chartreuse;
+  height : 440px;
+  margin-top: 50px;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: larger;
+  margin-left: auto;
+  margin-right: auto;
+  /* background-color: #f5f5f5; */
+          box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+
+ 	width:390px;
+  border-radius: 3%;
+}
+
+
+div a:hover{
+	font-size:21px;
+  color: red;
+  
+}
+
+
+
+nav {
+  background-color: #333;
+  overflow: hidden;
+  
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+nav li {
+  float: left;
+}
+
+nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: #111;
+}
+
+.innerBox{
+	
+	border:0.5px solid grey;
+	margin : 25px;
+	background-color:#f2f2f2;
+	border-radius:4%;
+	width:auto;
+	display:flex;
+	 align-items:center;
+        justify-content:center;
+        height:60px;
+	
+	
+}
+
+
+p{
+	margin-top:15px;
+	color:#333;
+}
+
+
+
+
+</style>
+
+
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/logout">Logout</a></li>
+      <li><a href="https://www.linkedin.com/in/rohit-kapade-625358220/">Creator</a></li>
+    </ul>
+
+    <p style="color: white; margin-left: 85%;margin-top: 10px;">Teacher's Dashboard</p>
+
+  </nav>
+
+
+
+<div id="links" >
+
+
+ 
+<div class="innerBox"> <a class="linkss"  th:href ="@{/students/new}"><p>Add Student</p></a></br> </div>
+<div class="innerBox"> <a class="linkss"  th:href="@{/students}"><p>Show all Student</p></a></br> </div>
+<div class="innerBox"> <a class="linkss"  th:href="@{/getTopperStudent}"><p>Topper Student</p></a></br> </div>
+<div class="innerBox"> <a class="linkss"  th:href="@{/login}"><p>Logout</p></a></br> </div>
+
+
+
+
+
+
+</div>
+
+</body>
+</html>

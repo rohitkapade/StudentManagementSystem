@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+
+body{
+background-color:#f1f1f1;
+}
+
+	.addStudent{
+	  border: 1px solid #007bff;
+	  padding : 12px;
+	  border-radius:5px;
+	  color : black;
+	  font-family: Arial, sans-serif;
+	  text-decoration: none;
+	  margin-left:270px;
+	  margin-top:50px;
+	}
+	
+	.addStudent:hover{
+		background-color:#ADD8E6;
+	}
+
+	
+	.linkbutton{
+	  
+	  border: 1px solid #007bff;
+	  padding : 10px;
+	  border-radius:5px;
+	  color : black;
+		font-family: Arial, sans-serif;
+		text-decoration: none;
+	  
+	  
+	}
+	
+    table {
+      border-collapse: collapse;
+      width: 65%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom:50px;
+    }
+
+    th,
+    td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+    
+    
+
+nav {
+  background-color: #333;
+  overflow: hidden;
+  
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+nav li {
+  float: left;
+}
+
+nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: #111;
+}
+
+
+    
+    
+  
+	
+</style>
+
+<body>
+
+
+ <nav>
+    <ul>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/logout">Logout</a></li>
+      <li><a href="https://www.linkedin.com/in/rohit-kapade-625358220/">Creator</a></li>
+    </ul>
+
+    <p style="color: white; margin-left: 85%;margin-top: 10px;">Teacher's Dashboard</p>
+
+  </nav>
+ 
+ 		<h2 style="text-align: center">Students Data</h2>
+
+ 		<table >
+			<thead >
+				<tr>
+					<th> Student First Name</th>
+				
+					<th> Student Email </th>
+					<th> Percentage </th>
+					<th> Actions </th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each = "student: ${students}">
+					<td th:text = "${student.firstName}"></td>
+				
+					<td th:text = "${student.email}"></td>
+					<td th:text = "${student.percentage}" ></td>
+					<td>
+					
+						<a th:href = "@{/students/seeMarksheet/{id}(id=${student.id})}" class="linkbutton"  >Marksheet</a>
+						
+						<a th:href = "@{/students/edit/{id}(id=${student.id})}" class="linkbutton">Update</a>
+						
+						<a th:href = "@{/students/{id}(id=${student.id})}" class="linkbutton" style="background-color:orange; color: white">Delete</a>
+						 
+						
+					</td>
+				</tr>
+			</tbody>
+		
+		</table>
+		
+		
+		<a th:href = "@{/students/new}" class = "addStudent"> Add Student</a>
+		
+		<a th:href = "@{/home}" class = "addStudent" style="margin-left:760px">Main menu</a>
+ 
+ 
+ 
+</body>
+</html>

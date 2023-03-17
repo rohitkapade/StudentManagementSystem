@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mark Sheet</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f1f1f1;
+      }
+      table {
+        border-collapse: collapse;
+        width: 80%;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #4caf50;
+        color: #fff;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      h2 {
+        text-align: center;
+      }
+      
+      #logout{
+      	height:50px;
+      	width:150px;
+      	background-color:#4caf50;
+		font-size:20px;
+		color:white;
+      	border:0.5px solid black;
+      	border-radius:5%;
+      	margin-left:150px;
+      }
+      
+
+      
+      
+    </style>
+  </head>
+  <body>
+  
+  
+  
+  
+  
+    <h2>Mark Sheet</h2>
+
+    <p style="margin-left:155px">Student name : <span th:text="${topperStudent.firstName}">User</span></p>
+    <p style="margin-left:155px">Email-id : <span th:text="${topperStudent.email}">User</span></p>
+
+    <table>
+      <tr>
+        <th>Subject</th>
+        <th>Marks</th>
+      </tr>
+      <tr>
+        <td>English</td>
+        <td><span th:text="${topperStudent.englishMarks}">User</span></td>
+      </tr>
+      <tr>
+        <td>Maths</td>
+        <td><span th:text="${topperStudent.mathMarks}">User</span></td>
+      </tr>
+      <tr>
+        <td>Science</td>
+        <td><span th:text="${topperStudent.scienceMarks}">User</span></td>
+      </tr>
+     
+      <tr>
+        <td>Total</td>
+        <td><span th:text="${topperStudent.scienceMarks}+${topperStudent.mathMarks}+${topperStudent.englishMarks}">User</span>/300</td>
+      </tr>
+      <tr>
+        <td>Percentage</td>
+        <td><span th:text="${topperStudent.percentage}">User</span>%</td>
+      </tr>
+    </table>
+    
+    
+    <button id="logout"><a style="color:white" href="/logout">Logout</a></button>
+  </body>
+</html>

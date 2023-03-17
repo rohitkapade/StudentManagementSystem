@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f1f1f1;
+      }
+      form {
+        background-color: #fff;
+        width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+      h2 {
+        text-align: center;
+      }
+      input[type='text'],
+      input[type='password'] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+      }
+      button {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      input[type='submit']:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <form th:action="@{/login}" method="POST">
+      <h2>Login Form</h2>
+
+     
+      <div th:if="${param.logout}">You logged out</div>
+
+      <label for="username">Username:</label>
+
+      <input type="text" name="username" class="form-control" />
+      <label for="password">Password:</label>
+
+      <input type="text" name="password" class="form-control" />
+      <div class="box-footer">
+        <button type="submit" >
+          Submit
+        </button>
+      </div>
+    </form>
+  </body>
+</html>
