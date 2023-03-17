@@ -40,7 +40,6 @@ public class CustomerUDS implements UserDetailsService {
 		
 		
 		if(username.equals("admin@gmail.com")) {
-			System.out.println("It is figring out ADMIN@GMAIL>COM");
 			
 			List<GrantedAuthority> g1 = new ArrayList<>();
 			
@@ -50,9 +49,7 @@ public class CustomerUDS implements UserDetailsService {
 			return new User("admin@gmail.com",  passwordEncoder1().encode("admin") ,g1);
 			
 		}
-		
-		
-		
+
 		System.out.println("it is comming in lubun");
 		
 		Optional<Student> c = cr.findByEmail(username);
@@ -64,7 +61,7 @@ public class CustomerUDS implements UserDetailsService {
 
 		System.out.println(cr.findAll());
 		
-		System.out.println("if this is working than next shall also work");
+	
 		System.out.println("Not comming at last of lubun"+ c.get().getEmail()+" "+ c.get().getLastName());
 		
 		return new User(c.get().getEmail(),c.get().getLastName(),g);

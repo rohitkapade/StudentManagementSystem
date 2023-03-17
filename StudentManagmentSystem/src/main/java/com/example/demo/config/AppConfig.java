@@ -35,16 +35,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Configuration
 public class AppConfig {
-	
-	
-	 
 
-
-
-
-
-
-	private UserDetailsService customUserDetailsService;
+	private UserDetailsService customUserDetailsService;           // autowiring  of CustomUserDetailsManager
 	
 	
 	 public AppConfig(UserDetailsService customUserDetailsService) {
@@ -54,27 +46,10 @@ public class AppConfig {
 	 
 	 
 
-//	@Bean
-//	SecurityFilterChain springSecurityConfiguration(HttpSecurity http) throws Exception {
-//
-////		http.authorizeHttpRequests().requestMatchers(HttpMethod.POST, "/y").permitAll().anyRequest()
-////				.authenticated().and().csrf().disable().formLogin().and().httpBasic();
-//		
-//		
-//		http.authorizeHttpRequests().requestMatchers(HttpMethod.GET, "/home").permitAll().anyRequest()
-//		.authenticated().and().csrf().disable().formLogin().loginPage("/login").permitAll(); 
-//
-//		return http.build();
-//
-//	}
 
 	@Bean
 	SecurityFilterChain springSecurityConfiguration(HttpSecurity http) throws Exception {
-		
-		System.out.println("I also come here sometime ************/////");
 
-	
-		 
 		http.authorizeHttpRequests().requestMatchers(HttpMethod.GET,"/getTopperStudent")
             .permitAll()
             .anyRequest()
@@ -92,6 +67,9 @@ public class AppConfig {
 		return http.build();
 
 	}
+	
+	
+	
 
 	@Bean
 	PasswordEncoder passwordEncoder() {
@@ -133,7 +111,7 @@ public class AppConfig {
 	
 	@Bean
 	DaoAuthenticationProvider daoAuthProvider() {
-		DaoAuthenticationProvider dao = new DaoAuthenticationProvider();
+		DaoAuthenticationProvider dao = new DaoAuthenticationProvider(); // Registering custom User details service with DaoAuthProvider
 		dao.setUserDetailsService(customUserDetailsService);
 		dao.setPasswordEncoder(passwordEncoder());
 		
@@ -142,11 +120,9 @@ public class AppConfig {
 	
 	
 	
-	private AuthenticationSuccessHandler successHandler() {
-		
-		
-		
-		
+	// Seperate Redirection of Teacher and Student after Login
+	private AuthenticationSuccessHandler successHandler() {  
+
 		
         return new SimpleUrlAuthenticationSuccessHandler() {
             @Override
@@ -160,21 +136,20 @@ public class AppConfig {
             	if(authentication.getName().equals("admin@gmail.com")) {
             		Collection<GrantedAuthority> auth = new ArrayList<>();
             		auth.add(new SimpleGrantedAuthority("ADMIN"));
-            		System.out.println("It can be Done as Is coming in determinTaggsds=============");
-//            		authentication.getAuthorities().add(new SimpleGrantedAuthority("ADMIN"));
+          
             	}
             	
             	
-            	System.out.println(authentication+" "+"rrrrrrrrrrrrrrrrrrr");
+            	
             	
                 String defaultUrl = "StudentMarksheet";
                 Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
                 for (GrantedAuthority grantedAuthority : authorities) {
                     if (grantedAuthority.getAuthority().equals("STUDENT")) {
-                    	System.out.println("1");
+                    
                         return defaultUrl;
                     } else if (grantedAuthority.getAuthority().equals("ADMIN")) {
-                    	System.out.println("2");
+                    
                         return "/home";
                     }
                 }

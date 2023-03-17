@@ -42,6 +42,8 @@ public class StudentController {
 		return "students";
 	}
 	
+	
+	// Addition of new Student by teacher - HTML page
 	@GetMapping("/students/new")
 	public String createStudentForm(Model model) {
 		
@@ -54,6 +56,8 @@ public class StudentController {
 		
 	}
 	
+	
+	// Inserting data of new student in database
 	@PostMapping("/students")
 	public String saveStudent(@ModelAttribute("student") Student student) {
 		
@@ -65,12 +69,17 @@ public class StudentController {
 		return "redirect:/students";
 	}
 	
+	
+	// Update student by his id - HTML page
 	@GetMapping("/students/edit/{id}")
 	public String editStudentForm(@PathVariable Long id, Model model) {
 		model.addAttribute("student", studentService.getStudentById(id));
 		return "edit_student";
 	}
 
+	
+	
+	// Inserting data of updated student
 	@PostMapping("/students/{id}")
 	public String updateStudent(@PathVariable Long id,
 			@ModelAttribute("student") Student student,
@@ -88,8 +97,9 @@ public class StudentController {
 		return "redirect:/students";		
 	}
 	
-	// handler method to handle delete student request
 	
+	
+	// handler method to handle delete student request - HTML page
 	@GetMapping("/students/{id}")
 	public String deleteStudent(@PathVariable Long id) {
 		studentService.deleteStudentById(id);
@@ -97,11 +107,14 @@ public class StudentController {
 	}
 	
 	
+	// Dashboard page for teacher - HTML
 	@GetMapping("/home")
 	public String home() {
 		return "home";
 	}
 	
+	
+	// Student with highest percentage - HTML
 	@GetMapping("/getTopperStudent")
 	public String getTopperStudent(Model model) {
 		
@@ -112,6 +125,7 @@ public class StudentController {
 		return "marksheet";
 	}
 	
+	// Student marksheet  by id for teacher - HTML page
 	@GetMapping("/students/seeMarksheet/{id}")
 	public String seeMarkssheet(@PathVariable Long id, Model model) {
 		
@@ -122,18 +136,23 @@ public class StudentController {
 		return "marksheet";
 	}
 	
-	@GetMapping("/students/seeMarksheet")
-	public String seeMarkssheetOAfterLogin(Authentication auth,Model model) {
-		
-		
-		Optional<Student> stu = stuRepo.findByEmail(auth.getName());
-		
-		
-		model.addAttribute("topperStudent", stu.get());
-		
-		return "marksheet";
-	}
 	
+	
+	
+//	@GetMapping("/students/seeMarksheet")
+//	public String seeMarkssheetOAfterLogin(Authentication auth,Model model) {
+//		
+//		
+//		Optional<Student> stu = stuRepo.findByEmail(auth.getName());
+//		
+//		
+//		model.addAttribute("topperStudent", stu.get());
+//		
+//		return "marksheet";
+//	}
+	
+	
+	// Student marksheet for student role - HTML page
 	@GetMapping("/StudentMarksheet")
 	public String seeMarkssheetOAfterLogin1(Authentication auth,Model model) {
 		

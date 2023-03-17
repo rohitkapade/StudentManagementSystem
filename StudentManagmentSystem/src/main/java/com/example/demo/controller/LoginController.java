@@ -26,6 +26,8 @@ public class LoginController {
 	@Autowired
 	private StudentRepository customerRepository;
 	
+	
+	// Custom login page
 	@GetMapping("/login")
 	public  String getLoggedInCustomerDetailsHandler(){
 		
@@ -38,33 +40,6 @@ public class LoginController {
 	}
 	
 	
-//	@PostMapping("/signIn")
-//	public  String getLoggedInCustomerDetailsHandler1(ModelAttribute LoginForm , Model model){
-//		
-//		System.out.println("signIn POST");
-//		 
-////		String name = loginfor.
-//		
-////		Student customer= customerRepository.findByEmail(auth.getName()).orElseThrow(() -> new BadCredentialsException("Invalid Username or password"));
-////		
-//		System.out.println("should work if it comes here");
-//		 
-//
-//		 return "home";
-//
-//	}
-	
-	
-//	@GetMapping("/si")
-//	public String getLoggedInCustomerDetailsHandler(Authentication auth){
-//		
-//		System.out.println("in siginin"); 
-//		
-//		 Student customer= customerRepository.findByEmail(auth.getName()).orElseThrow(() -> new BadCredentialsException("Invalid Username or password"));
-//		
-//		 return "home";
-//		
-//		
-//	}
+
 	
 }
